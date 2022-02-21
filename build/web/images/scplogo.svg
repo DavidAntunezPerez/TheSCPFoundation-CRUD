@@ -1,0 +1,21 @@
+<svg version="1.1" viewBox="-1200 -1200 2400 2400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <mask id="c">
+   <path d="m-1200-1200h2400v2400h-2400z" fill="#fff"/>
+   <circle r="925"/>
+   <path d="m-306-861 36-185h540l36 185"/>
+   <path transform="rotate(120)" d="m-306-861 36-185h540l36 185"/>
+   <path transform="rotate(240)" d="m-306-861 36-185h540l36 185"/>
+  </mask>
+ </defs>
+ <g mask="url(#c)">
+  <circle r="984"/>
+  <path id="a" d="m-359-913 36-185h646l36 185"/>
+  <use transform="rotate(120)" xlink:href="#a"/>
+  <use transform="rotate(240)" xlink:href="#a"/>
+ </g>
+ <circle r="590.5" fill="none" stroke="#000" stroke-width="119"/>
+ <path id="b" d="m-40-752v455h-93.5l133.5 259 133.5-259h-93.5v-455"/>
+ <use transform="rotate(120)" xlink:href="#b"/>
+ <use transform="rotate(240)" xlink:href="#b"/>
+</svg>
