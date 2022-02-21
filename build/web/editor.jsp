@@ -39,10 +39,13 @@
         %>
         <div id="wrapper py-5" class="container">
             <a href="./logout.jsp" class="login link">
-                <h4>Log Out</h4>
+                <h4 class="mt-2">Log Out</h4>
             </a>
-            <h6 class="text-light mt-3">Welcome <b class="primary-color"> <%=session.getAttribute("usuario")%> </b>!</h6>
-            <h1 class="text-center py-3 text-uppercase text-light">EDIT AS AN AUTHOR</h1>
+            <form method="get" action="./searchscp.jsp">
+                  <input type="text" name="search" class="mt-3" placeholder="Search...">
+            </form>
+            <h6 class="text-light text-center mt-3">Welcome <b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>!</h6>
+            <h1 class="text-center text-uppercase text-light">EDIT AS AN AUTHOR</h1>
             <%
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
