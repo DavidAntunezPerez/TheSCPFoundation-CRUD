@@ -14,6 +14,7 @@ Importing the database, you will have these users:
 - User: An2 / Password: 123
 - User: User1 / Password: user
 - Admin: root / Password: root
+
 NOTE: Using root user, you will be able to access and manipulate all the data inside the database.
 
 From default, there are also 3 SCP added, 2 of them from the user An2 and the other one from User1.
