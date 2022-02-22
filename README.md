@@ -7,16 +7,16 @@ Many people contribute in social media with different stories about the SCP Foun
 So what i wanted to do is giving them a place to **add, delete or modify their own stories**, all in the same website using this CRUD.
 
 ## INDEX: 
-1. [Database Used](##DATABASE-USED:)
-2. [Admin and Users](#ADMIN-AND-USERS-ADDED: )
-3. [Screenshots](#SCREENSHOTS:)
+1. [Database Used](##database-used)
+2. [Admin and Users](##admin-and-users-added)
+3. [Screenshots](##screenshots)
 
-## DATABASE USED:
+## DATABASE USED
 ![image](./screenshots/database.png)
 
 ***NOTE:*** *To execute this NB Project, you must import [this file](https://github.com/DavidAntunezPerez/TheSCPFoundation-CRUD/blob/master/sql/scp_foundation_crud.sql) as DataBase*
 
-## ADMIN AND USERS ADDED:
+## ADMIN AND USERS ADDED
 Importing the database, you will have these users:
 - User: An2 / Password: 123
 - User: User1 / Password: user
@@ -26,7 +26,7 @@ Importing the database, you will have these users:
 
 From default, there are also 3 SCP added, 2 of them from the user An2 and the other one from User1.
 
-## SCREENSHOTS:
+## SCREENSHOTS
 ### **Index:**
 ![image](./screenshots/index.png)
 
