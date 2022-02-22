@@ -48,6 +48,10 @@
                 session.removeAttribute("usuario");
                 session.removeAttribute("password");
                 session.removeAttribute("CodAut");
+                // Delete session email and date if you come from signup
+                session.removeAttribute("email");
+                session.removeAttribute("date");
+                // Close session
                 session.invalidate();
                 //
                 Class.forName("com.mysql.jdbc.Driver");
@@ -78,7 +82,7 @@
                         <%while (listado.next()) {
                                 String nomScp = listado.getString("NomScp");
                                 contView += "v"; // To change each ID, add v to contView
-%>
+                        %>
                         <tr>
                             <th scope="row"><%=numeroFilas++%></th>
                             <td> <%=nomScp%></td>
@@ -90,7 +94,7 @@
                             <%
 
                                 if (numeroFilas > 1) { // So it doesnt show just the button when its empty
-%>    
+                            %>    
                             <!-- VIEW BUTTON MODAL -->
                             <td>
                                 <!-- Button trigger modal -->
@@ -126,7 +130,7 @@
                             <% } %>
                         </tr>
                         <%  } // while
-%>
+                        %>
                     </tbody>
                 </table>
             </div>

@@ -25,6 +25,10 @@
             session.removeAttribute("usuario");
             session.removeAttribute("password");
             session.removeAttribute("CodAut");
+            // Delete session email and date if you come from signup
+            session.removeAttribute("email");
+            session.removeAttribute("date");
+            // Close session
             session.invalidate();
             //
         %>
@@ -70,7 +74,7 @@
                                         <div class="center-wrap">
                                             <div class="section text-center">
                                                 <h4 class="mb-0 pb-3">Sign Up</h4>
-                                                <form action="./signup-redirect.jsp">
+                                                <form action="./signup-validation.jsp">
                                                     <div class="form-group">
                                                         <input type="text" name="signname" class="form-style" placeholder="Your Full Name" id="logname"
                                                                autocomplete="off" required>

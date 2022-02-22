@@ -29,6 +29,10 @@
             session.removeAttribute("usuario");
             session.removeAttribute("password");
             session.removeAttribute("CodAut");
+            // Delete session email and date if you come from signup
+            session.removeAttribute("email");
+            session.removeAttribute("date");
+            // Close session
             session.invalidate();
             //
         %>

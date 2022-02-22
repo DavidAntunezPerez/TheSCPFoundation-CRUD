@@ -21,16 +21,15 @@
     </head>
     <body class="bg-dark">
         <%
-            session.setAttribute("usuario", request.getParameter("signname")); // Saved user from session
-            session.setAttribute("password", request.getParameter("signpass")); // Saved password from session
+            
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
                     "root", "");
             Statement s = conexion.createStatement();
             s.executeUpdate("INSERT INTO author VALUES (NULL,'"
-                    + request.getParameter("signname") + "','"
                     + session.getAttribute("usuario") + "','" 
-                    + request.getParameter("signdate") + "','"
+                    + session.getAttribute("email") + "','" 
+                    + session.getAttribute("date") + "','"
                     + session.getAttribute("password") + "');");
         %>  
         <script> document.location = "./editor.jsp";</script>

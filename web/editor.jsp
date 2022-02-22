@@ -30,6 +30,10 @@
     </head>
     <body class="bg-dark">
         <%
+            // Delete session email and date if you come from signup
+            session.removeAttribute("email");
+            session.removeAttribute("date");
+
             // If the user or password are null, return to log in page (To prevent bugs)
             if ((session.getAttribute("usuario") == null) || (session.getAttribute("password") == null)) {
         %>
