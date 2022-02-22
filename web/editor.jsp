@@ -30,20 +30,23 @@
     </head>
     <body class="bg-dark">
         <%
+            // If the user or password are null, return to log in page (To prevent bugs)
             if ((session.getAttribute("usuario") == null) || (session.getAttribute("password") == null)) {
         %>
         <h1 class="text-center py-3 text-uppercase text-danger">ERROR, USERNAME OR PASSWORD MISSMATCH</h1>
-        <meta http-equiv = "refresh" content = "2; url = ./login.html" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS -->
+        <meta http-equiv = "refresh" content = "2; url = ./login.jsp" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS -->
         <%
-        } else {
+        } else { // Else, Show tables
         %>
         <div id="wrapper" class="container">
             <a href="./logout.jsp" class="login link">
                 <h4 class="mt-2">Log Out</h4>
             </a>
+            <!-- SEARCH -->
             <form method="get" action="./searchscpedit.jsp">
                 <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
+            <!-- WELCOME TEXT -->
             <h6 class="text-light text-center mt-3">Welcome <b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>!</h6>
             <h1 class="text-center text-uppercase text-light">EDIT AS AN AUTHOR</h1>
             <%

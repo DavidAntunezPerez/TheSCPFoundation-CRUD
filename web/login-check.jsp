@@ -34,7 +34,7 @@
             while (comprobar.next()) {
                 if (comprobar.getString("NumAut").equals("0")) {
         %> <h1 class="text-center py-3 text-danger">ERROR,<b class="text-light"> Username doesnt exists!</b></h1>
-        <meta http-equiv = "refresh" content = "2; url = ./login.html" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS --> <%
+        <meta http-equiv = "refresh" content = "2; url = ./login.jsp" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS --> <%
         } else {
         %> <script> document.location = "./login-redirect.jsp";</script> <%
                         }

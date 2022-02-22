@@ -33,7 +33,7 @@
             if ((session.getAttribute("usuario") == null) || (session.getAttribute("password") == null)) {
         %>
         <h1 class="text-center py-3 text-uppercase text-danger">ERROR, USERNAME OR PASSWORD MISSMATCH</h1>
-        <meta http-equiv = "refresh" content = "2; url = ./login.html" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS -->
+        <meta http-equiv = "refresh" content = "2; url = ./login.jsp" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS -->
         <%
         } else {
         %>

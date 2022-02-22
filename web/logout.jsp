@@ -18,6 +18,6 @@
         session.removeAttribute("CodAut");
         session.invalidate();
         %>
-        <script> document.location = "./index.html";</script>
+        <script> document.location = "./index.jsp";</script>
     </body>
 </html>

@@ -34,7 +34,7 @@
         %> <script> document.location = "./editor.jsp";</script> <%
         }else {
         %> <h1 class="text-center py-3 text-danger">ERROR,<b class="text-light"> Username or Password missmatch!</b></h1>
-        <meta http-equiv = "refresh" content = "2; url = ./login.html" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS --> <%
+        <meta http-equiv = "refresh" content = "2; url = ./login.jsp" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS --> <%
                     }
                 }
         %>  

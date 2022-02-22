@@ -30,23 +30,27 @@
     </head>
     <body class="bg-dark">
         <!-- LOGO -->
-        <a href="./index.html" class="logo mt-1">
+        <a href="./index.jsp" class="logo mt-1">
             <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
         </a>
         <div id="wrapper" class="container mt-4">
+            <!-- RETURN BUTTON TO COME BACK TO READER -->
             <a href="./reader.jsp" " class="primary-color link"><h3>Return</h3></a>
+            <!-- INFORMATION ABOUT SEARCH RESULTS -->
             <h3 class="text-center text-uppercase text-light">Your search results for<b class="primary-color mx-auto"> <%=request.getParameter("search")%></b> are...</h3>
-                <% Class.forName("com.mysql.jdbc.Driver");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
-                            "root", "");
-                    Statement s = conexion.createStatement();
-                    ResultSet listado = s.executeQuery("SELECT * FROM scp"
-                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas "
-                            + "WHERE NomScp  LIKE '%" + request.getParameter("search") + "%' "
-                            + "OR AliasScp LIKE '%" + request.getParameter("search") + "%'"); // SEARCH BY NAME OR ALIAS
-                    int numeroFilas = 1;
-                    String contView = "v";
-                %> 
+            <%  // DB SENTENCE
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
+                        "root", "");
+                Statement s = conexion.createStatement();
+                ResultSet listado = s.executeQuery("SELECT * FROM scp"
+                        + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas "
+                        + "WHERE NomScp  LIKE '%" + request.getParameter("search") + "%' "
+                        + "OR AliasScp LIKE '%" + request.getParameter("search") + "%'"); // SEARCH BY NAME OR ALIAS
+                int numeroFilas = 1; // Number of rows
+                String contView = "v"; // To add ID to the view button
+            %> 
+            <!-- START OF MAIN TABLE -->
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover align-middle">
                     <thead>
@@ -64,7 +68,7 @@
                     <tbody>
                         <%while (listado.next()) {
                                 String nomScp = listado.getString("NomScp");
-                                contView += "v";
+                                contView += "v"; // Add v to each ID so it is different in the modal
                         %>
                         <tr>
                             <th scope="row"><%=numeroFilas++%></th>
@@ -78,7 +82,7 @@
 
                                 if (numeroFilas > 1) {
                             %>    
-
+                            <!-- MODAL BUTTON VIEW -->
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%=contView%>">
@@ -112,7 +116,7 @@
                             </td>
                             <% } %>
                         </tr>
-                        <%  }
+                        <%  } // while
                         %>
                     </tbody>
                 </table>

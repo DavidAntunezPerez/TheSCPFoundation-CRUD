@@ -1,6 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<%-- 
+    Document   : login
+    Author     : antun
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Log In / Sign Up</title>
@@ -13,12 +18,18 @@
         <link rel="stylesheet" href="./styles/login.css">
         <!-- LINK ICON -->
         <link rel="shortcut icon" href="./images/scplogo.svg" type="image/x-icon">
-
     </head>
-
     <body>
+        <%
+            // To close if session is up
+            session.removeAttribute("usuario");
+            session.removeAttribute("password");
+            session.removeAttribute("CodAut");
+            session.invalidate();
+            //
+        %>
         <!-- LOGO -->
-        <a href="./index.html" class="logo" target="_blank">
+        <a href="./index.jsp" class="logo" target="_blank">
             <img src="./images/scplogo.svg" alt="">
         </a>
 
@@ -26,6 +37,7 @@
             <div class="container">
                 <div class="row full-height justify-content-center">
                     <div class="col-12 text-center align-self-center py-5">
+                        <!-- SELECT BETWEEN LOGIN AND SIGNUP  -->
                         <div class="section pb-5 pt-5 pt-sm-2 text-center">
                             <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
                             <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
@@ -96,5 +108,4 @@
         </div>
 
     </body>
-
 </html>

@@ -30,26 +30,36 @@
     </head>
     <body class="bg-dark">
         <!-- LOGO -->
-        <a href="./index.html" class="logo">
+        <a href="./index.jsp" class="logo">
             <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
         </a>
         <div id="wrapper" class="container">
             <form method="get" action="./searchscpreader.jsp">
-                  <input type="text" name="search" class="mt-3" placeholder="Search...">
+                <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
+            <!-- TOP-INFORMATION -->
             <h6 class="text-light text-center mt-3">WARNING: THE FOUNDATION DATABASE IS</h6>
             <h1 class="text-center text-uppercase text-danger">CLASSIFIED</h1>
             <h6 class="text-light text-center">ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED
                 PERPETRATORS <br> WILL BE TRACKED, LOCATED, AND DETAINED</h6>
-                <% Class.forName("com.mysql.jdbc.Driver");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
-                            "root", "");
-                    Statement s = conexion.createStatement();
-                    ResultSet listado = s.executeQuery("SELECT * FROM scp"
-                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
-                    int numeroFilas = 1;
-                    String contView = "v";
-                %> 
+            <!-- DATABASE -->
+            <%
+                // To close if session is up
+                session.removeAttribute("usuario");
+                session.removeAttribute("password");
+                session.removeAttribute("CodAut");
+                session.invalidate();
+                //
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
+                        "root", "");
+                Statement s = conexion.createStatement();
+                ResultSet listado = s.executeQuery("SELECT * FROM scp"
+                        + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                int numeroFilas = 1; // Number of rows
+                String contView = "v"; // To use it as ID for View Modal
+            %> 
+            <!-- MAIN TABLE -->
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover align-middle">
                     <thead>
@@ -67,8 +77,8 @@
                     <tbody>
                         <%while (listado.next()) {
                                 String nomScp = listado.getString("NomScp");
-                                contView += "v";
-                        %>
+                                contView += "v"; // To change each ID, add v to contView
+%>
                         <tr>
                             <th scope="row"><%=numeroFilas++%></th>
                             <td> <%=nomScp%></td>
@@ -79,9 +89,9 @@
                             <td><%=listado.getString("AliasAut")%></td>
                             <%
 
-                                if (numeroFilas > 1) {
-                            %>    
-
+                                if (numeroFilas > 1) { // So it doesnt show just the button when its empty
+%>    
+                            <!-- VIEW BUTTON MODAL -->
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%=contView%>">
@@ -115,8 +125,8 @@
                             </td>
                             <% } %>
                         </tr>
-                        <%  }
-                        %>
+                        <%  } // while
+%>
                     </tbody>
                 </table>
             </div>
