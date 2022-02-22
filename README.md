@@ -23,7 +23,7 @@ Importing the database, you will have these users:
 - Admin: root / Password: root
 
 ***NOTE***: Using root user, you will be able to access and manipulate all the data inside the database. 
-(The name of the database must be: scp_foundation_crud )
+The name of the database must be: *scp_foundation_crud* 
 
 From default, there are also 3 SCP added, 2 of them from the user An2 and the other one from User1.
 
