@@ -7,9 +7,9 @@ Many people contribute in social media with different stories about the SCP Foun
 So what i wanted to do is giving them a place to **add, delete or modify their own stories**, all in the same website using this CRUD.
 
 ## INDEX: 
-1. [Database Used](##database-used)
-2. [Admin and Users](##admin-and-users-added)
-3. [Screenshots](##screenshots)
+1. [Database Used](#database-used)
+2. [Admin and Users](#admin-and-users-added)
+3. [Screenshots](#screenshots)
 
 ## DATABASE USED
 ![image](./screenshots/database.png)
