@@ -50,10 +50,28 @@
             <form method="get" action="./searchscpedit.jsp">
                 <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
+            <form class="form-inline mt-1 d-flex" action="./editor.jsp" method="get">
+                <select name="order">
+                    <option selected>Select Order...</option>
+                    <option value="NomScp">SCP</option>
+                    <option value="AliasScp">Alias</option>
+                    <option value="LocScp">Localization</option>
+                    <option value="EstadoScp">Status</option>
+                    <option value="NomClas">Class</option>
+                    <option value="AliasAut">Author</option>
+                </select> 
+                <input class="btn btn-outline-success mx-1" type="submit" value="Apply">
+            </form>
             <!-- WELCOME TEXT -->
             <h6 class="text-light text-center mt-3">Welcome <b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>!</h6>
             <h1 class="text-center text-uppercase text-light">EDIT AS AN AUTHOR</h1>
             <%
+                String search = "";
+                // If is ordered by one of the form values this will be inside the main SQL query
+                if (request.getParameter("order") != null) {
+                    search += "ORDER BY "+request.getParameter("order").toString();
+                }
+
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
                         "root", "");
@@ -62,7 +80,7 @@
                 boolean root; // to get sure we are logged into root
                 if ((session.getAttribute("usuario").equals("root")) && (session.getAttribute("password").equals("root"))) {
                     listado = s.executeQuery("SELECT * FROM scp"
-                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas " + search + " ;");
                     root = true; // to get sure we are logged into root
                     session.setAttribute("CodAut", "18"); // In this case, we are using JUST the root code from our database, if you have imported the repository database it should be 18, else, change it to the right number
 
@@ -70,7 +88,7 @@
                     listado = s.executeQuery("SELECT * FROM scp"
                             + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas"
                             + " WHERE AliasAut='" + session.getAttribute("usuario")
-                            + "' AND ContrAut='" + session.getAttribute("password") + "'");
+                            + "' AND ContrAut='" + session.getAttribute("password") + "' " + search + " ;");
                     root = false; // not logged into root
                 }
                 int numeroFilas = 1; // to show the number of rows
@@ -95,6 +113,7 @@
                     </thead>
                     <tbody>
                         <%while (listado.next()) {
+                                // Declarate variables so the code is cleaner
                                 String nomScp = listado.getString("NomScp");
                                 String aliasScp = listado.getString("AliasScp");
                                 String locScp = listado.getString("LocScp");

@@ -37,6 +37,18 @@
             <form method="get" action="./searchscpreader.jsp">
                 <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
+             <form class="form-inline mt-1 d-flex" action="./reader.jsp" method="get">
+                <select name="order">
+                    <option selected>Select Order...</option>
+                    <option value="NomScp">SCP</option>
+                    <option value="AliasScp">Alias</option>
+                    <option value="LocScp">Localization</option>
+                    <option value="EstadoScp">Status</option>
+                    <option value="NomClas">Class</option>
+                    <option value="AliasAut">Author</option>
+                </select> 
+                <input class="btn btn-outline-success mx-1" type="submit" value="Apply">
+            </form>
             <!-- TOP-INFORMATION -->
             <h6 class="text-light text-center mt-3">WARNING: THE FOUNDATION DATABASE IS</h6>
             <h1 class="text-center text-uppercase text-danger">CLASSIFIED</h1>
@@ -44,6 +56,11 @@
                 PERPETRATORS <br> WILL BE TRACKED, LOCATED, AND DETAINED</h6>
             <!-- DATABASE -->
             <%
+                String search = "";
+                // If is ordered by one of the form values this will be inside the main SQL query
+                if (request.getParameter("order") != null) {
+                    search += "ORDER BY "+request.getParameter("order").toString();
+                }
                 // To close if session is up
                 session.removeAttribute("usuario");
                 session.removeAttribute("password");
@@ -59,7 +76,7 @@
                         "root", "");
                 Statement s = conexion.createStatement();
                 ResultSet listado = s.executeQuery("SELECT * FROM scp"
-                        + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                        + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas "+search+" ;");
                 int numeroFilas = 1; // Number of rows
                 String contView = "v"; // To use it as ID for View Modal
             %> 
