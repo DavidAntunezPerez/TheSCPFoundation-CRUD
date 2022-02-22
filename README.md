@@ -15,6 +15,7 @@ So what i wanted to do is giving them a place to **add, delete or modify their o
 ![image](./screenshots/database.png)
 
 ***NOTE:*** *To execute this NB Project, you must import [this file](https://github.com/DavidAntunezPerez/TheSCPFoundation-CRUD/blob/master/sql/scp_foundation_crud.sql) as DataBase*
+( The name of the database must be: *scp_foundation_crud* )
 
 ## ADMIN AND USERS ADDED
 Importing the database, you will have these users:
@@ -23,7 +24,6 @@ Importing the database, you will have these users:
 - Admin: root / Password: root
 
 ***NOTE***: Using root user, you will be able to access and manipulate all the data inside the database. 
-The name of the database must be: *scp_foundation_crud* 
 
 From default, there are also 3 SCP added, 2 of them from the user An2 and the other one from User1.
 
