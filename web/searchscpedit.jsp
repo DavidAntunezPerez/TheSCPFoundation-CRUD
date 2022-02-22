@@ -55,7 +55,9 @@
                 boolean root; // to get sure we are logged into root
                 if ((session.getAttribute("usuario").equals("root")) && (session.getAttribute("password").equals("root"))) {
                     listado = s.executeQuery("SELECT * FROM scp"
-                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas"
+                            + " WHERE NomScp LIKE '%" + request.getParameter("search") + "%' " // SEARCH BY NAME
+                            + "OR AliasScp LIKE '%" + request.getParameter("search") + "%'"); // SEARCH BY ALIAS");
                     root = true; // to get sure we are logged into root
                     session.setAttribute("CodAut", "18"); // In this case, we are using JUST the root code from our database, if you have imported the repository database it should be 18, else, change it to the right number
 
@@ -71,10 +73,10 @@
                             
                     root = false; // not logged into root
                 }
-                int numeroFilas = 1;
-                String contDel = "d";
-                String contView = "v";
-                String contEdit = "e";
+                int numeroFilas = 1; // To show the number of rows
+                String contDel = "d"; // for controling Delete ID
+                String contView = "v"; // for controling View ID
+                String contEdit = "e"; // for controling Edit ID
 
             %> 
             <div class="table-responsive">

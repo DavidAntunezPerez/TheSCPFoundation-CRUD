@@ -20,28 +20,32 @@ Importing the database, you will have these users:
 From default, there are also 3 SCP added, 2 of them from the user An2 and the other one from User1.
 
 ## SCREENSHOTS:
-**Index:**
+### **Index:**
 ![image](./screenshots/index.png)
 
-**Access as a Reader:**
+### **Access as a Reader:**
 ![image](./screenshots/reader.png)
 ![image](./screenshots/reader-in.png)
+![image](./screenshots/reader-search.png)
 
-**Log In & Sign Up:**
+
+### **Log In & Sign Up:**
 ![image](./screenshots/login.png)
 ![image](./screenshots/signup.png)
 
-**Access as an author:**
+### **Access as an author:**
 ![image](./screenshots/author.png)
+![image](./screenshots/author-search.png)
 
-**Access as root:**
+### **Access as root:**
 ![image](./screenshots/rootaccess.png)
+![image](./screenshots/root-search.png)
 
-**DELETE:**
+### **DELETE:**
 ![image](./screenshots/delete.png)
-**INSERT:**
+### **INSERT:**
 ![image](./screenshots/insert.png)
 ![image](./screenshots/insert-2.png)
-**EDIT:**
+### **EDIT:**
 ![image](./screenshots/edit.png)
 ![image](./screenshots/edit-2.png)

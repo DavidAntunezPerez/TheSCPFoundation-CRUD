@@ -66,10 +66,10 @@
                             + "' AND ContrAut='" + session.getAttribute("password") + "'");
                     root = false; // not logged into root
                 }
-                int numeroFilas = 1;
-                String contDel = "d";
-                String contView = "v";
-                String contEdit = "e";
+                int numeroFilas = 1; // to show the number of rows
+                String contDel = "d"; // for controling Delete ID
+                String contView = "v"; // for controling View ID
+                String contEdit = "e"; // for controling Edit ID
 
             %> 
             <div class="table-responsive">
