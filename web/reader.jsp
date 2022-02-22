@@ -33,7 +33,7 @@
         <a href="./index.html" class="logo">
             <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
         </a>
-        <div id="wrapper py-5" class="container">
+        <div id="wrapper" class="container">
             <form method="get" action="./searchscpreader.jsp">
                   <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>

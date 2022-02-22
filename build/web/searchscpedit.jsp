@@ -37,13 +37,11 @@
         <%
         } else {
         %>
-        <div id="wrapper py-5" class="container">
+        <div id="wrapper" class="container mt-3">
             <a href="./logout.jsp" class="login link">
                 <h4 class="mt-2">Log Out</h4>
             </a>
-            <form method="get" action="./searchscp.jsp">
-                <input type="text" name="search" class="mt-3" placeholder="Search...">
-            </form>
+            <a href="./editor.jsp" " class="primary-color link"><h3>Return</h3></a>
             <h6 class="text-light text-center mt-3"><b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>,</h6>
             <h3 class="text-center text-uppercase text-light">Your search results for<b class="primary-color mx-auto"> <%=request.getParameter("search")%></b> are...</h3>
             <%

@@ -37,7 +37,7 @@
         <%
         } else {
         %>
-        <div id="wrapper py-5" class="container">
+        <div id="wrapper" class="container">
             <a href="./logout.jsp" class="login link">
                 <h4 class="mt-2">Log Out</h4>
             </a>

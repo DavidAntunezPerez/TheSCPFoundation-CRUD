@@ -30,11 +30,11 @@
     </head>
     <body class="bg-dark">
         <!-- LOGO -->
-        <a href="./index.html" class="logo">
+        <a href="./index.html" class="logo mt-1">
             <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
         </a>
-        <div id="wrapper py-5" class="container">
-            <a href="./reader.jsp" class="primary-color link">Return</a>
+        <div id="wrapper" class="container mt-4">
+            <a href="./reader.jsp" " class="primary-color link"><h3>Return</h3></a>
             <h3 class="text-center text-uppercase text-light">Your search results for<b class="primary-color mx-auto"> <%=request.getParameter("search")%></b> are...</h3>
                 <% Class.forName("com.mysql.jdbc.Driver");
                     Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
