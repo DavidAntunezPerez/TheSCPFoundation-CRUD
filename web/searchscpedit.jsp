@@ -41,11 +41,11 @@
             <a href="./logout.jsp" class="login link">
                 <h4 class="mt-2">Log Out</h4>
             </a>
-            <form method="get" action="./searchscpedit.jsp">
+            <form method="get" action="./searchscp.jsp">
                 <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
-            <h6 class="text-light text-center mt-3">Welcome <b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>!</h6>
-            <h1 class="text-center text-uppercase text-light">EDIT AS AN AUTHOR</h1>
+            <h6 class="text-light text-center mt-3"><b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>,</h6>
+            <h3 class="text-center text-uppercase text-light">Your search results for<b class="primary-color mx-auto"> <%=request.getParameter("search")%></b> are...</h3>
             <%
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
@@ -60,10 +60,15 @@
                     session.setAttribute("CodAut", "18"); // In this case, we are using JUST the root code from our database, if you have imported the repository database it should be 18, else, change it to the right number
 
                 } else {
+                // IN MY CASE, I WANT THAT THE SEARCH BAR JUST SEARCHS INTO NAME OR ALIAS
                     listado = s.executeQuery("SELECT * FROM scp"
                             + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas"
                             + " WHERE AliasAut='" + session.getAttribute("usuario")
-                            + "' AND ContrAut='" + session.getAttribute("password") + "'");
+                            + "' AND ContrAut='" + session.getAttribute("password") + "' "
+                            + "AND NomScp LIKE '%" + request.getParameter("search") + "%' " // SEARCH BY NAME
+                            + "OR AliasScp LIKE '%" + request.getParameter("search") + "%'"); // SEARCH BY ALIAS
+                            
+                            
                     root = false; // not logged into root
                 }
                 int numeroFilas = 1;

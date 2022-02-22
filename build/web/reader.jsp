@@ -25,9 +25,18 @@
         <link rel="shortcut icon" href="./images/scplogo.svg" type="image/x-icon">
         <!-- BS5 JAVASCRIPT MODAL -->
         <script src="./javascripts/script.js"></script>
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="./styles/table.css"/>
     </head>
     <body class="bg-dark">
+        <!-- LOGO -->
+        <a href="./index.html" class="logo">
+            <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
+        </a>
         <div id="wrapper py-5" class="container">
+            <form method="get" action="./searchscpreader.jsp">
+                  <input type="text" name="search" class="mt-3" placeholder="Search...">
+            </form>
             <h6 class="text-light text-center mt-3">WARNING: THE FOUNDATION DATABASE IS</h6>
             <h1 class="text-center text-uppercase text-danger">CLASSIFIED</h1>
             <h6 class="text-light text-center">ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED

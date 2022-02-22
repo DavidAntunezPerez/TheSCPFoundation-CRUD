@@ -34,19 +34,16 @@
             <img src="./images/scplogo.svg" alt="SCP Foundation Logo">
         </a>
         <div id="wrapper py-5" class="container">
-            <form method="get" action="./searchscpreader.jsp">
-                  <input type="text" name="search" class="mt-3" placeholder="Search...">
-            </form>
-            <h6 class="text-light text-center mt-3">WARNING: THE FOUNDATION DATABASE IS</h6>
-            <h1 class="text-center text-uppercase text-danger">CLASSIFIED</h1>
-            <h6 class="text-light text-center">ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED
-                PERPETRATORS <br> WILL BE TRACKED, LOCATED, AND DETAINED</h6>
+            <a href="./reader.jsp" class="primary-color link">Return</a>
+            <h3 class="text-center text-uppercase text-light">Your search results for<b class="primary-color mx-auto"> <%=request.getParameter("search")%></b> are...</h3>
                 <% Class.forName("com.mysql.jdbc.Driver");
                     Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
                             "root", "");
                     Statement s = conexion.createStatement();
                     ResultSet listado = s.executeQuery("SELECT * FROM scp"
-                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                            + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas "
+                            + "WHERE NomScp  LIKE '%" + request.getParameter("search") + "%' "
+                            + "OR AliasScp LIKE '%" + request.getParameter("search") + "%'"); // SEARCH BY NAME OR ALIAS
                     int numeroFilas = 1;
                     String contView = "v";
                 %> 

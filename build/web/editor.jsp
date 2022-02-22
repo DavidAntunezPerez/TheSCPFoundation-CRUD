@@ -26,7 +26,7 @@
         <!-- BS5 JAVASCRIPT MODAL -->
         <script src="./javascripts/script.js"></script>
         <!-- REL: CUSTOM STYLESHEET -->
-        <link rel="stylesheet" href="./styles/editor.css"/>
+        <link rel="stylesheet" href="./styles/table.css"/>
     </head>
     <body class="bg-dark">
         <%
@@ -41,8 +41,8 @@
             <a href="./logout.jsp" class="login link">
                 <h4 class="mt-2">Log Out</h4>
             </a>
-            <form method="get" action="./searchscp.jsp">
-                  <input type="text" name="search" class="mt-3" placeholder="Search...">
+            <form method="get" action="./searchscpedit.jsp">
+                <input type="text" name="search" class="mt-3" placeholder="Search...">
             </form>
             <h6 class="text-light text-center mt-3">Welcome <b class="primary-color mx-auto"> <%=session.getAttribute("usuario")%> </b>!</h6>
             <h1 class="text-center text-uppercase text-light">EDIT AS AN AUTHOR</h1>
@@ -52,14 +52,19 @@
                         "root", "");
                 Statement s = conexion.createStatement();
                 ResultSet listado;
+                boolean root; // to get sure we are logged into root
                 if ((session.getAttribute("usuario").equals("root")) && (session.getAttribute("password").equals("root"))) {
                     listado = s.executeQuery("SELECT * FROM scp"
                             + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas");
+                    root = true; // to get sure we are logged into root
+                    session.setAttribute("CodAut", "18"); // In this case, we are using JUST the root code from our database, if you have imported the repository database it should be 18, else, change it to the right number
+
                 } else {
                     listado = s.executeQuery("SELECT * FROM scp"
                             + " JOIN author ON author.CodAut = scp.CodAut JOIN clase_scp ON clase_scp.CodClas = scp.CodClas"
                             + " WHERE AliasAut='" + session.getAttribute("usuario")
                             + "' AND ContrAut='" + session.getAttribute("password") + "'");
+                    root = false; // not logged into root
                 }
                 int numeroFilas = 1;
                 String contDel = "d";
@@ -94,8 +99,10 @@
                                 contDel += "d";
                                 contView += "v";
                                 contEdit += "e";
-                                session.setAttribute("CodAut", listado.getString("CodAut")); // Saved Author ID from session
-%>
+                                if (!root) { // if we are not into root, take the database correspondent number
+                                    session.setAttribute("CodAut", listado.getString("CodAut")); // Saved Author ID from session
+                                }
+                        %>
                         <tr>
                             <th scope="row"><%=numeroFilas++%></th>
                             <td> <%=nomScp%></td>

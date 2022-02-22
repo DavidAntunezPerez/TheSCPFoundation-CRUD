@@ -10,7 +10,6 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: #c4c3ca;
-  background-color: #1f2029;
   overflow-x: hidden;
 }
 .primary-color{
@@ -83,4 +82,18 @@ a:hover {
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
-/*  */
+/* LOGO */
+.logo {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: block;
+  z-index: 100;
+  transition: all 250ms linear;
+}
+.logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+  filter: invert(94%) sepia(9%) saturate(1800%) hue-rotate(329deg) brightness(104%) contrast(102%);
+}
