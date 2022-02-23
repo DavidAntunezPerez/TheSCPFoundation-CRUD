@@ -8,14 +8,19 @@ So what i wanted to do is giving them a place to **add, delete or modify their o
 
 ## INDEX: 
 1. [Database Used](#database-used)
-2. [Admin and Users](#admin-and-users-added)
-3. [Screenshots](#screenshots)
+2. [Crud Operating Diagram](#crud-operating-diagram)
+3. [Admin and Users](#admin-and-users-added)
+4. [Screenshots](#screenshots)
 
 ## DATABASE USED
 ![image](./screenshots/database.png)
 
 ***NOTE:*** *To execute this NB Project, you must import [this file](https://github.com/DavidAntunezPerez/TheSCPFoundation-CRUD/blob/master/sql/scp_foundation_crud.sql) as DataBase*
 ( The name of the database must be: *scp_foundation_crud* )
+
+## CRUD OPERATING DIAGRAM
+This is an in-detail diagram about the functioning of my CRUD:
+![image](./screenshots/crud-diagram.png)
 
 ## ADMIN AND USERS ADDED
 Importing the database, you will have these users:
