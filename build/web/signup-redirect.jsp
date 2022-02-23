@@ -21,17 +21,19 @@
     </head>
     <body class="bg-dark">
         <%
-            
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/scp_foundation_crud",
                     "root", "");
             Statement s = conexion.createStatement();
             s.executeUpdate("INSERT INTO author VALUES (NULL,'"
-                    + session.getAttribute("usuario") + "','" 
-                    + session.getAttribute("email") + "','" 
+                    + session.getAttribute("usuario") + "','"
+                    + session.getAttribute("email") + "','"
                     + session.getAttribute("date") + "','"
                     + session.getAttribute("password") + "');");
+
         %>  
-        <script> document.location = "./editor.jsp";</script>
+        <h1 class="text-center py-3 text-light">Username,<b class="text-success"> created successfully</b>, try to <b class="text-primary"> Log In now. </b></h1>
+        <meta http-equiv = "refresh" content = "2; url = ./login.jsp" /> <!-- REDIRECT TO LOGIN AGAIN AFTER 3 SECONDS -->
     </body>
 </html>
